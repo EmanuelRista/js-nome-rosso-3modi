@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="box">
+      <div class="text-box">
+        <p>Benvenuto, come ti chiami?</p>
+      </div>
+      <div class="input-box">
+        <input type="text" id="visitor" name="visitor" placeholder="Inserisci qui il tuo nome" value="">
+        <button type="button" id="my_button" name="button">Click</button>
+      </div>
+      <div class="text-box">
+        <p id="greeting"></p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      document.getElementById('my_button').addEventListener('click', displayGreeting)
+
+      function displayGreeting() {
+        var hisName = document.getElementById('visitor').value;//remember: deve stare dentro la funzione, se fosse prima il codice verrebbe caricato quando il value risulta vuoto
+        while (hisName === "") {
+          alert("Attenzione: non hai inserito il nome");
+          document.getElementById("visitor").value = "";
+          break
+        };//validazione (Se la stringa è vuota si incazza)
+        while (hisName !== "") {
+          document.getElementById('greeting').innerHTML =  "Ciao " + hisName;
+          document.getElementById('visitor').value = ""; //reset imparato!
+          break
+        };//validazione (se la stringa è piena è contento)
+      };
+      var elementGreeting = document.getElementById('greeting');
+      elementGreeting.className += "red";//aggiunge la classe .red
+    </script>
+  </body>
+</html>
